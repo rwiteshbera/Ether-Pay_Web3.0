@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useContext} from "react";
 import { AiFillPlayCircle } from "react-icons/ai";
 import { SiEthereum } from "react-icons/si";
 import { BsInfoCircle } from "react-icons/bs";
-
+import { TransactionContext } from "../context/TransactionContext";
 import { Loader } from "./";
 
 const commonStyles =
@@ -19,12 +19,19 @@ const Input = ({ placeholder, name, type, value, handleChnage }) => (
   />
 );
 
-const handleSubmit = () => {
-
-}
 
 const Welcome = () => {
-  const connectWallet = () => {};
+  const {connectWallet, connectedAccount, formData, sendTransaction, handleChange} = useContext(TransactionContext);
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const {addressTo, amount, keyword, message} = formData;
+    if(!addressTo || !amount ||!keyword || !message) return;
+    sendTransaction();
+}
+
 
   return (
     <div className="flex w-full justify-center items-center">
@@ -43,7 +50,7 @@ const Welcome = () => {
             onClick={connectWallet}
             className="flex flex-row justify-center items-center my-5 bg-[#2952e3] rounded-full cursor-pointer hover:bg-[#2546bd]"
           >
-            <p className="text-white text-base">Connect Wallet</p>
+            {!connectedAccount && (<p className="text-white text-base">Connect Wallet</p>)}
           </button>
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
             <div className={`rounded-tl-2xl ${commonStyles}`}>Reliability</div>
@@ -78,25 +85,25 @@ const Welcome = () => {
               placeholder="Address To"
               name="addressTo"
               type="text"
-              handleChnage={() => {}}
+              handleChnage={handleChange}
             />
             <Input
               placeholder="Amount (ETH)"
               name="amount"
               type="number"
-              handleChnage={() => {}}
+              handleChnage={handleChange}
             />
             <Input
               placeholder="Keyword (GIF)"
               name="keyword"
               type="text"
-              handleChnage={() => {}}
+              handleChnage={handleChange}
             />
             <Input
               placeholder="Enter message"
               name="message"
               type="text"
-              handleChnage={() => {}}
+              handleChnage={handleChange}
             />
 
             <div className="h-[1px] w-full bg-gray-400 my-2"/>
