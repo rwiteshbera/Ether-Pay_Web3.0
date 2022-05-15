@@ -5,6 +5,8 @@ import { BsInfoCircle } from "react-icons/bs";
 import { TransactionContext } from "../context/TransactionContext";
 import { Loader } from "./";
 
+import { shortenAddress } from "../utils/shortenAddress";
+
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
 
@@ -21,7 +23,7 @@ const Input = ({ placeholder, name, type, value, handleChnage }) => (
 
 
 const Welcome = () => {
-  const {connectWallet, connectedAccount, formData, sendTransaction, handleChange} = useContext(TransactionContext);
+  const {connectWallet, connectedAccount, formData, sendTransaction, handleChange, transactions, isLoading} = useContext(TransactionContext);
 
 
   const handleSubmit = (e) => {
@@ -72,7 +74,7 @@ const Welcome = () => {
                 <BsInfoCircle fontSize={17} color="#fff" />
               </div>
               <div>
-                <p className="text-white font-light text-sm">Address</p>
+                <p className="text-white font-light text-sm">{connectedAccount}</p>
                 <p className="text-white font-semibold text-sm mt-1">
                   Ethereum
                 </p>
@@ -94,7 +96,7 @@ const Welcome = () => {
               handleChnage={handleChange}
             />
             <Input
-              placeholder="Keyword (GIF)"
+              placeholder="Keyword"
               name="keyword"
               type="text"
               handleChnage={handleChange}
@@ -108,7 +110,7 @@ const Welcome = () => {
 
             <div className="h-[1px] w-full bg-gray-400 my-2"/>
 
-            {false ? (
+            {isLoading ? (
                 <Loader />
             ) : (
                 <button type="button" onClick={handleSubmit}

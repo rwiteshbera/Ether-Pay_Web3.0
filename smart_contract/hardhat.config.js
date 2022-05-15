@@ -7,7 +7,7 @@ module.exports = {
   networks: {
     testnet: {
       url: "http://127.0.0.1:8545",
-      accounts: ['27c7852ef7aa3eab3fb1c3efa36e0dba492382f18f0b6d43021aef305d80526b']
+      accounts: ['08705896345e65fc890ea0bb43e89ee42e889c9bee8878a554151d0b0c8dc65e']
     }
   }
 }
