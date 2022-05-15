@@ -1,1 +1,1 @@
-### EtherPay!
+### EtherPay
