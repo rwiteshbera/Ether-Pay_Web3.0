@@ -1,3 +1,2 @@
 ### EtherPay!
-[](https://user-images.githubusercontent.com/73098407/168491093-260a473c-1479-4986-8670-b639ea441a44.png)
-
+![HomePage EtherPay](https://user-images.githubusercontent.com/73098407/168491124-aade98ef-0db2-4a39-9528-905eaafa7267.png)
