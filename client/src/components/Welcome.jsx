@@ -5,7 +5,7 @@ import { BsInfoCircle } from "react-icons/bs";
 import { TransactionContext } from "../context/TransactionContext";
 import { Loader } from "./";
 
-import { shortenAddress } from "../utils/shortenAddress";
+import { ShortenAddress } from "../utils/ShortenAddress";
 
 const commonStyles =
   "min-h-[70px] sm:px-0 px-2 sm:min-w-[120px] flex justify-center items-center border-[0.5px] border-gray-400 text-sm font-light text-white";
@@ -54,7 +54,7 @@ const Welcome = () => {
           >
             {!connectedAccount && (<p className="text-white text-base">Connect Wallet</p>)}
           </button>
-          <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
+          <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10 custom-text-font">
             <div className={`rounded-tl-2xl ${commonStyles}`}>Reliability</div>
             <div className={`${commonStyles}`}>Security</div>
             <div className={`rounded-tr-2xl ${commonStyles}`}>Ethereum</div>
@@ -74,7 +74,7 @@ const Welcome = () => {
                 <BsInfoCircle fontSize={17} color="#fff" />
               </div>
               <div>
-                <p className="text-white font-light text-sm">{connectedAccount}</p>
+                <p className="text-white font-light text-sm">{ShortenAddress(connectedAccount)}</p>
                 <p className="text-white font-semibold text-sm mt-1">
                   Ethereum
                 </p>
@@ -114,7 +114,7 @@ const Welcome = () => {
                 <Loader />
             ) : (
                 <button type="button" onClick={handleSubmit}
-                 className="text-white w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer">Pay Now</button>
+                 className="text-white font-bold w-full mt-2 border-[1px] p-2 border-[#3d4f7c] rounded-full cursor-pointer bg-blue-600">Pay Now</button>
             )}
           </div>
         </div>
